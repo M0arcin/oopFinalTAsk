@@ -4,13 +4,9 @@ import java.util.ArrayList;
 
 public class Query {
     private Bool bool;
-/*    private Should should;
-    private Must must;*/
 
     private Query(QueryBuilder queryBuilder){
         bool = queryBuilder.bool;
-/*        should = queryBuilder.should;
-        must = queryBuilder.must;*/
     }
 
     public static final class QueryBuilder{
@@ -27,15 +23,31 @@ public class Query {
         public QueryBuilder mustMatch(String s1, String s2){
             this.must = this.bool.getMust();
             this.must.mustMatch(s1,s2);
-            boolList.add(this.must);
-            return this;
+            // this loop goes through boolList, if there  is  an instance of Must inside it doesn't add new object to the list, if there  isn't  it adds new must
+            while(true){
+                for(Object o : boolList){
+                    if ((o instanceof Must)) {
+                        return this;
+                    }
+                }
+                boolList.add(this.must);
+                return this;
+            }
         }
 
         public QueryBuilder shouldMatch(String s1, String s2){
             this.should = this.bool.getShould();
             this.should.shouldMatch(s1,s2);
-            boolList.add(this.should);
-            return this;
+            // this loop goes through boolList, if there  is  an instance of Should inside it doesn't add new object to the list, if there  isn't  it adds new should
+            while(true){
+                for(Object o : boolList){
+                    if ((o instanceof Should)) {
+                        return this;
+                    }
+                }
+                boolList.add(this.should);
+                return this;
+            }
         }
 
         public Query build(){

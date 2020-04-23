@@ -28,6 +28,4 @@ public class Bool {
     public ArrayList<Object> getBool(){
         return boolList;
     }
-
-    //moze jakis list z must i should ktory potem jest dodawany do getBool
 }
