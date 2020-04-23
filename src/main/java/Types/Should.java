@@ -5,22 +5,26 @@ import java.util.List;
 
 public class Should {
 
-    private List<Match> should;
+    private List<Object> should;
 
     public Should() {
-        this.should = new ArrayList<Match>();
+        this.should = new ArrayList<Object>();
     }
 
     public void shouldMatch(String s1, String s2){
         Match match = new Match(s1,s2);
-        should.add(match);
+        addToShouldList(match);
     }
 
-    public List<Match> getShould() {
+    public List<Object> getShould() {
         return should;
     }
 
-    public void setShould(List<Match> should) {
+    public void setShould(List<Object> should) {
         this.should = should;
+    }
+
+    protected void addToShouldList(Object o){
+        should.add(o);
     }
 }
