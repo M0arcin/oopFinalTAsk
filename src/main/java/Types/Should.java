@@ -7,7 +7,7 @@ public class Should {
 
     private List<Match> should;
 
-    public Should(String s1, String s2) {
+    public Should() {
         this.should = new ArrayList<Match>();
     }
 
@@ -20,4 +20,7 @@ public class Should {
         return should;
     }
 
+    public void setShould(List<Match> should) {
+        this.should = should;
+    }
 }

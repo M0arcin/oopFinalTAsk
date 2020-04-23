@@ -13,4 +13,8 @@ public class Match {
     public HashMap<String, String> getMatch() {
         return match;
     }
+
+    public void setMatch(HashMap<String, String> match) {
+        this.match = match;
+    }
 }

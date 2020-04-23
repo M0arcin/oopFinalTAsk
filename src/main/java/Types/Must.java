@@ -20,4 +20,7 @@ public class Must {
         return must;
     }
 
+    public void setMust(List<Match> must) {
+        this.must = must;
+    }
 }
